@@ -36,7 +36,7 @@ def map_plotter(target_file, colors):
     y = 0
     for color in colors:
         # fill is the inverse to our overlay use of the color codes, so we need to adapt for the plot
-        draw.rectangle((x, y, x+10, y+10), fill=(255-color[0], 255-color[1], 255-color[2]))
+        draw.rectangle((x, y, x+9, y+9), fill=(255-color[0], 255-color[1], 255-color[2]))
         if x < 750:
             x += 10
         else:
