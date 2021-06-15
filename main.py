@@ -58,15 +58,11 @@ def write_csv(target_file, labels):
 
 
 if __name__ == '__main__':
-    file = sys.argv[1]
+    try:
+        file = sys.argv[1]
 
-    error = False
-
-    if not file:
-        print("Missing parameters")
-        # Explain the needed parameters to the user
-        print("Please supply: filename")
-        error = True
+    except IndexError:
+        sys.exit('Missing parameters \nPlease supply: filename')
 
     color_map = generate_map()
     plot_map(file, color_map)
