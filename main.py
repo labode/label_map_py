@@ -3,7 +3,7 @@ import sys
 from PIL import Image, ImageDraw
 
 
-def map_generator():
+def generate_map():
     increments = []
 
     i = 0
@@ -28,7 +28,7 @@ def map_generator():
     return colors
 
 
-def map_plotter(target_file, colors):
+def plot_map(target_file, colors):
     image = Image.new('RGB', (750, 200), (255, 255, 255))
     draw = ImageDraw.Draw(image)
 
@@ -46,7 +46,7 @@ def map_plotter(target_file, colors):
     image.save(target_file + '.png')
 
 
-def csv_writer(target_file, labels):
+def write_csv(target_file, labels):
     # Initiate File
     filename = str(target_file) + ".csv"
     output_file = open(filename, "w")
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         print("Please supply: filename")
         error = True
 
-    color_map = map_generator()
-    map_plotter(file, color_map)
-    csv_writer(file, color_map)
+    color_map = generate_map()
+    plot_map(file, color_map)
+    write_csv(file, color_map)
 
