@@ -13,4 +13,4 @@ The program will output a .png of the colors, and a .csv containing the color co
 
 ## Usage
 ### Example
-`python3 main.py output`
+`python3 color_map_generator.py output`
