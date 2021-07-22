@@ -1,6 +1,6 @@
 import random
 import sys
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 
 def generate_map():
@@ -29,19 +29,27 @@ def generate_map():
 
 
 def plot_map(target_file, colors):
-    image = Image.new('RGB', (750, 200), (255, 255, 255))
+    image = Image.new('RGB', (7500, 2000), (255, 255, 255))
     draw = ImageDraw.Draw(image)
 
     x = 0
     y = 0
+
+    i = 0
+    font = ImageFont.truetype('/usr/share/fonts/truetype/crosextra/Caladea-Regular.ttf', 20)
+
     for color in colors:
         # fill is the inverse to our overlay use of the color codes, so we need to adapt for the plot
-        draw.rectangle((x, y, x+9, y+9), fill=(255-color[0], 255-color[1], 255-color[2]))
-        if x < 750:
-            x += 10
+        draw.rectangle((x, y, x+99, y+99), fill=(255-color[0], 255-color[1], 255-color[2]))
+        draw.text((x+10, y+45), str(i), font=font, fill=(255, 255, 255))
+
+        i += 1
+
+        if x < 7500:
+            x += 100
         else:
             x = 0
-            y += 10
+            y += 100
 
     image.save(target_file + '.png')
 
@@ -52,7 +60,7 @@ def write_csv(target_file, labels):
     output_file = open(filename, "w")
 
     for label in labels:
-        output_file.write(str(label[0]) + ',' + str(label[1]) + ',' + str(label[2]) + '\n')
+        output_file.write(str(label[0]) + ',' + str(label[1]) + ',' + str(label[2]) + ' ')
 
     output_file.close()
 
